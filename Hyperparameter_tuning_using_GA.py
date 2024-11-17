@@ -57,7 +57,7 @@ y_val = np.random.randint(2, size=20)  # Example validation labels
 def create_model(learning_rate=0.001, batch_size=32):
     joint_model = JointIntentAndSlotFillingModel(
     intent_num_labels=len(intent_map), slot_num_labels=len(slot_map))
-    opt = Adam(learning_rate=3e-5, epsilon=1e-08)
+    opt = Adam(learning_rate=learning_rate, epsilon=1e-08)
     losses = [SparseCategoricalCrossentropy(from_logits=True),SparseCategoricalCrossentropy(from_logits=True)]
     metrics = [SparseCategoricalAccuracy('accuracy'),SparseCategoricalAccuracy('accuracy')]
     joint_model.compile(optimizer=opt, loss=losses, metrics=metrics)
